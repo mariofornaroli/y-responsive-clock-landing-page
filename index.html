@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Current Date and Time</title>
+</head>
+<body>
+    <p class="title" id="day">Day here</p>
+    <div class="counter-list">
+        <div class="item">
+            <p class="number" id="hours">11</p>
+            <p class="unit">hours</p>
+        </div>
+        <div class="item">
+            <p class="number" id="minutes">32</p>
+            <p class="unit">minutes</p>
+        </div>
+        <div class="item">
+            <p class="number" id="seconds">08</p>
+            <p class="unit">seconds</p>
+        </div>
+    </div>
+
+    <script>
+        var computeDate = () => {
+            var now = new Date();
+            // Full Date
+            var year = now.getFullYear();
+            var month = now.toLocaleString('default', {month: 'long'});
+            var day = now.getDate();
+            // Time
+            document.getElementById('hours').innerHTML = now.getHours();
+            document.getElementById('minutes').innerHTML = now.getMinutes();
+            document.getElementById('seconds').innerHTML = now.getSeconds();
+            
+            document.getElementById('day').innerHTML = `${month} ${day}, ${year}`;
+        }
+
+        // copute every 1000 ms
+        setInterval(() => {
+            computeDate();
+        }, 1000);
+        // compute first time immediatly
+        computeDate();
+    </script>
+    
+</body>
+</html>
